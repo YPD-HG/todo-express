@@ -9,16 +9,24 @@ app.use(cors());
 
 app.post('/', (req, res) => {
     let id = Math.floor(Math.random() * 101);
-
-    todos.push(
-        id,
-        req.body
-    )
+    if (req.body !== '') {
+        todos.push(
+            id,
+            req.body
+        )
+    }
     console.log("**********")
     console.log("todos :", todos)
     // we get the input, because express = Node.js = js for backend
     console.log(JSON.stringify(req.body));
     res.send('Hello World!');
+})
+
+app.get('/', (req, res) => {
+    console.log("***** am in app.js get *****", todos)
+    res.json({
+        todos
+    })
 })
 
 app.delete('/', (req, res) => {
