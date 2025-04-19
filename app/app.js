@@ -21,6 +21,10 @@ app.post('/', (req, res) => {
     res.send('Hello World!');
 })
 
+app.delete('/', (req, res) => {
+
+})
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
