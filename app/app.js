@@ -15,15 +15,26 @@ app.post('/', (req, res) => {
             req.body
         )
     }
-    console.log("**********")
-    console.log("todos :", todos)
-    // we get the input, because express = Node.js = js for backend
-    console.log(JSON.stringify(req.body));
     res.send('Hello World!');
 })
 
+app.delete('/', (req, res) => {
+    if (req.body !== '') {
+        const data = req.body.textData
+        console.log(data)
+        const index = todos.findIndex((item) =>
+            item.todo === data);
+        console.log(index);
+        if (index !== -1) {
+            todos.splice(index, 1);
+            todos.splice(index-1, 1);
+        }
+        console.log("***todos***", todos)
+        res.send(todos);
+    }
+})
+
 app.get('/', (req, res) => {
-    console.log("***** am in app.js get *****", todos)
     res.json({
         todos
     })
