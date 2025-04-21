@@ -33,7 +33,7 @@ app.post('/', async (req, res) => {
         let file_content = fs.readFileSync('../data/todo.json', 'utf-8')
 
         if (file_content.trim()) {
-            todos = JSON.parse(file_content); 
+            todos = JSON.parse(file_content);
             // Convert string to array
             console.log("todos (string to array) :", todos)
         }
@@ -44,12 +44,12 @@ app.post('/', async (req, res) => {
         console.log(" *** str *** :", str)
 
         // something is wrong with writeFile
-        // fs.writeFile('../data/todo.json', str, (err) => {
-        //     if (err) throw err;
-        //     console.log('Data written');
-        // });
+        fs.writeFile('../data/todo.json', str, (err) => {
+            if (err) throw err;
+            console.log('Data written');
+        });
     }
-    res.send("Ok")
+    res.send(todos)
 })
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
