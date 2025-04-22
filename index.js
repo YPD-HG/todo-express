@@ -3,7 +3,7 @@ let inputButton = document.querySelector('#inputButton')
 async function postData() {
     let input = document.querySelector("#inputField").value
     if (input !== '') {
-        await fetch("http://localhost:3000/", {
+        await fetch("http://localhost:6001/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -13,7 +13,7 @@ async function postData() {
     }
 }
 async function getData() {
-    const url = "http://localhost:3000/";
+    const url = "http://localhost:6001/";
     try {
         const response = await fetch(url);
         let resp = await (response.json())
@@ -62,7 +62,7 @@ function createTodo(data) {
 
     let textData = textContentElement.textContent
     delBtn.addEventListener('click', async () => {
-        const res = await fetch("http://localhost:3000/", {
+        const res = await fetch("http://localhost:6001/", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
